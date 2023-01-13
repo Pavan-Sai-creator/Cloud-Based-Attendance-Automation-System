@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.caas.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherRegistrationFragment"
+        android:name="com.example.caas.TeacherRegistrationFragment"
+        android:label="fragment_teacher_registration"
+        tools:layout="@layout/fragment_teacher_registration" >
+        <action
+            android:id="@+id/action_teacherRegistrationFragment_to_teacherMainScreenFragment"
+            app:destination="@id/teacherMainScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentRegistrationFragment"
+        android:name="com.example.caas.StudentRegistrationFragment"
+        android:label="fragment_student_registration"
+        tools:layout="@layout/fragment_student_registration" />
+    <fragment
+        android:id="@+id/userLoginFragment"
+        android:name="com.example.caas.UserLoginFragment"
+        android:label="fragment_user_login"
+        tools:layout="@layout/fragment_user_login" >
+        <argument
+            android:name="userRole"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_teacherMainScreenFragment"
+            app:destination="@id/teacherMainScreenFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_studentMainScreenFragment"
+            app:destination="@id/studentMainScreenFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_teacherRegistrationFragment"
+            app:destination="@id/teacherRegistrationFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_studentRegistrationFragment"
+            app:destination="@id/studentRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherMainScreenFragment"
+        android:name="com.example.caas.TeacherMainScreenFragment"
+        android:label="fragment_teacher_main_screen"
+        tools:layout="@layout/fragment_teacher_main_screen" >
+        <argument
+            android:name="teacherId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentMainScreenFragment"
+        android:name="com.example.caas.StudentMainScreenFragment"
+        android:label="fragment_student_main_screen"
+        tools:layout="@layout/fragment_student_main_screen" >
+        <argument
+            android:name="studentId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherViewAttendanceFragment"
+        android:name="com.example.caas.TeacherViewAttendanceFragment"
+        android:label="fragment_teacher_view_attendance"
+        tools:layout="@layout/fragment_teacher_view_attendance" />
+    <fragment
+        android:id="@+id/teacherModifyAttendanceFragment"
+        android:name="com.example.caas.TeacherModifyAttendanceFragment"
+        android:label="fragment_teacher_modify_attendance"
+        tools:layout="@layout/fragment_teacher_modify_attendance" />
+</navigation>
