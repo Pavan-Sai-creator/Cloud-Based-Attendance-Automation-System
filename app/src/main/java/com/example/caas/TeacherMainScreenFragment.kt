@@ -20,7 +20,7 @@ class TeacherMainScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentTeacherMainScreenBinding.inflate(inflater,container,false)
         val currentTeacherId = args.teacherId
-        Toast.makeText(context,"Teacher ID: $currentTeacherId",Toast.LENGTH_LONG).show()
+        Toast.makeText(context,"You are in Teacher Main Screen Fragment, Teacher ID is: $currentTeacherId",Toast.LENGTH_LONG).show()
 
         return binding.root
     }
