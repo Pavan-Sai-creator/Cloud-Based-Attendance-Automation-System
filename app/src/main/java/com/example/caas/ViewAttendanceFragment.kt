@@ -23,15 +23,15 @@ class ViewAttendanceFragment : Fragment() {
 
         Toast.makeText(context,"In view att fragment", Toast.LENGTH_SHORT).show()
         var myAttendanceRecords = args.attendanceRecords
-        var record1 = "${myAttendanceRecords.listOfRecords[0].stID} ${myAttendanceRecords.listOfRecords[0].stName} ${myAttendanceRecords.listOfRecords[0].attStatus}"
-        var record2 = "${myAttendanceRecords.listOfRecords[1].stID} ${myAttendanceRecords.listOfRecords[1].stName} ${myAttendanceRecords.listOfRecords[1].attStatus}"
+        var record1 = "${myAttendanceRecords.listOfRecords[0].stId} ${myAttendanceRecords.listOfRecords[0].stName} ${myAttendanceRecords.listOfRecords[0].attStatus}"
+        var record2 = "${myAttendanceRecords.listOfRecords[1].stId} ${myAttendanceRecords.listOfRecords[1].stName} ${myAttendanceRecords.listOfRecords[1].attStatus}"
 
         var finalList = "${record1}\n\n${record2}"
 
         binding.viewAttendanceFinalListTv.text = finalList
 
 
-        Log.d("viewAttendanceFragment","${myAttendanceRecords.listOfRecords[0].stID} ${myAttendanceRecords.listOfRecords[0].stName} ${myAttendanceRecords.listOfRecords[0].attStatus}")
+        Log.d("viewAttendanceFragment","${myAttendanceRecords.listOfRecords[0].stId} ${myAttendanceRecords.listOfRecords[0].stName} ${myAttendanceRecords.listOfRecords[0].attStatus}")
 
         return binding.root
     }

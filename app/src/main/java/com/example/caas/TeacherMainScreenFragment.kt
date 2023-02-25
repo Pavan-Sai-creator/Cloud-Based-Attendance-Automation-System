@@ -71,8 +71,9 @@ class TeacherMainScreenFragment : Fragment() {
                 Log.d("Test","OK!")
                 var statement : Statement = conn.createStatement()
 
-                    var resultSet : ResultSet = statement.executeQuery("Select attendance.st_Id,attendance.st_Name, attendance.att_Status From attendance Inner join students on attendance.st_Id = students.st_id Where date = '${date}' and hour = '${hour}' and subject='${subject}' and class='${className}';")
-                    var listOfRecords = mutableListOf<Record>()
+                    //var resultSet : ResultSet = statement.executeQuery("Select attendance.st_Id,attendance.st_Name, attendance.att_Status From attendance Inner join students on attendance.st_Id = students.st_id Where date = '${date}' and hour = '${hour}' and subject='${subject}' and class='${className}';")
+                var resultSet : ResultSet = statement.executeQuery("SELECT attendance.st_Id,attendance.st_Name, attendance.att_Status FROM attendance INNER JOIN students on attendance.st_Id = students.st_Id WHERE date = '${date}' and hour = '${hour}' and subject='${subject}' and class='${className}';")
+                var listOfRecords = mutableListOf<Record>()
                     while (resultSet.next()) {
                         val id = resultSet.getString("st_Id")
                         val name = resultSet.getString("st_Name")
