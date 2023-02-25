@@ -54,6 +54,20 @@ class TeacherMainScreenFragment : Fragment() {
             var task4 = Task4()
             task4.execute()
         }
+
+        binding.teacherMainScreenUpdateAttendanceBtn.setOnClickListener {
+            className = binding.teacherMainScreenClassEt.text.toString()
+            date = binding.teacherMainScreenDt.text.toString()
+            subject = binding.teacherMainScreenSubjectEt.text.toString()
+            hour = binding.teacherMainScreenHourEt.text.toString()
+            studentId = binding.teacherMainScreenStudentIdEt.text.toString()
+
+            Log.d("Values", "$className, $date, $subject, $hour, $studentId")
+
+            var task5 = Task5()
+            task5.execute()
+        }
+
         return binding.root
     }
 
@@ -83,6 +97,7 @@ class TeacherMainScreenFragment : Fragment() {
                     }
                     badaList1 = BadaList(listOfRecords)
                 Log.d("MyArray","${badaList1.listOfRecords[0].stName}")
+                conn.close()
 
 
             }catch (e: Exception){
@@ -97,6 +112,39 @@ class TeacherMainScreenFragment : Fragment() {
             }else{
                 val action = TeacherMainScreenFragmentDirections.actionTeacherMainScreenFragmentToViewAttendanceFragment(badaList1)
                 findNavController().navigate(action)
+            }
+            super.onPostExecute(result)
+        }
+    }
+
+    inner class Task5 : AsyncTask<Void, Void, Void>() {
+        lateinit var badaList1: BadaList
+        var error = ""
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+            try{
+                Class.forName("com.mysql.jdbc.Driver").newInstance()
+                var conn = DriverManager.getConnection(
+                    "jdbc:mysql://caas.crjbtooqk9d1.ap-south-1.rds.amazonaws.com:3306/caas","admin","Sadguru1520")
+                Log.d("Test","OK!")
+                var statement : Statement = conn.createStatement()
+
+                //var resultSet : ResultSet = statement.executeQuery("Select attendance.st_Id,attendance.st_Name, attendance.att_Status From attendance Inner join students on attendance.st_Id = students.st_id Where date = '${date}' and hour = '${hour}' and subject='${subject}' and class='${className}';")
+                statement.executeUpdate("UPDATE attendance SET att_Status='1' WHERE date = '${date}' and hour = '${hour}' and subject='${subject}' and class='${className}' and st_Id='${studentId}';")
+
+
+
+            }catch (e: Exception){
+                error = e.toString()
+            }
+            return null
+        }
+
+        override fun onPostExecute(result: Void?) {
+            if(error != ""){
+                Log.d("MyError","$error")
+            }else{
+                Toast.makeText(context,"Updated successfully",Toast.LENGTH_SHORT).show()
             }
             super.onPostExecute(result)
         }
