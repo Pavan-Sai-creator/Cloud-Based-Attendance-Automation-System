@@ -26,7 +26,11 @@
         android:id="@+id/studentRegistrationFragment"
         android:name="com.example.caas.StudentRegistrationFragment"
         android:label="fragment_student_registration"
-        tools:layout="@layout/fragment_student_registration" />
+        tools:layout="@layout/fragment_student_registration" >
+        <action
+            android:id="@+id/action_studentRegistrationFragment_to_studentMainScreenFragment"
+            app:destination="@id/studentMainScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="com.example.caas.UserLoginFragment"
@@ -56,6 +60,9 @@
         <argument
             android:name="teacherId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_teacherMainScreenFragment_to_viewAttendanceFragment"
+            app:destination="@id/viewAttendanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentMainScreenFragment"
@@ -76,4 +83,13 @@
         android:name="com.example.caas.TeacherModifyAttendanceFragment"
         android:label="fragment_teacher_modify_attendance"
         tools:layout="@layout/fragment_teacher_modify_attendance" />
+    <fragment
+        android:id="@+id/viewAttendanceFragment"
+        android:name="com.example.caas.ViewAttendanceFragment"
+        android:label="fragment_view_attendance"
+        tools:layout="@layout/fragment_view_attendance" >
+        <argument
+            android:name="attendanceRecords"
+            app:argType="com.example.caas.BadaList" />
+    </fragment>
 </navigation>

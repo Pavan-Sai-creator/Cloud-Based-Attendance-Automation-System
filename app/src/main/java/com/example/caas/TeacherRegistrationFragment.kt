@@ -59,14 +59,8 @@ class TeacherRegistrationFragment : Fragment() {
                     "jdbc:mysql://caas.crjbtooqk9d1.ap-south-1.rds.amazonaws.com:3306/caas","admin","Sadguru1520")
                 Log.d("Test","OK!")
                 var statement : Statement = conn.createStatement()
-                /*var resultSet : ResultSet = */statement.executeUpdate("INSERT INTO Teachers (t_Id, t_Name, t_Email, t_Password) VALUES ('$teacherId', '$teacherName', '$teacherEmail', '$teacherPassword');")
+                statement.executeUpdate("INSERT INTO Teachers (t_Id, t_Name, t_Email, t_Password) VALUES ('$teacherId', '$teacherName', '$teacherEmail', '$teacherPassword');")
 
-
-
-//                var resultSet : ResultSet = statement.executeQuery("SELECT * FROM Teachers;")
-//                while (resultSet.next()){
-//                    records += resultSet.getString(1)+" "+resultSet.getString(2)+" "+resultSet.getString(3)+" "+resultSet.getString(4)+"\n"
-//                }
             }catch (e: Exception){
                 error = e.toString()
             }
